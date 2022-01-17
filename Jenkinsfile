@@ -9,9 +9,9 @@ pipeline {
     stages {
         stage('代码编译') {
             steps {
-                echo('编译')
-                echo('${hello}')
-                echo('${world}')
+                echo "编译"
+                echo "${hello}"
+                echo "${world}"
             }
         }
         stage('代码测试') {
