@@ -10,17 +10,20 @@ pipeline {
         stage('环境检查') {
             steps {
                 sh 'printenv'
+                echo "${hello}"
+                echo "${world}"
                 echo "正在检查基本信息"
                 sh 'java -version'
                 sh 'git --version'
-                sh 'mvn -v'
             }
         }
         stage('代码编译') {
+            agent {
+                docker { image 'maven:3-alpine'}
+            }
             steps {
                 echo "编译"
-                echo "${hello}"
-                echo "${world}"
+                sh 'mvn -v'
             }
         }
         stage('代码测试') {
