@@ -15,12 +15,12 @@ pipeline {
                 echo "正在检查基本信息"
                 sh 'java -version'
                 sh 'git --version'
+                sh 'docker version'
             }
         }
         stage('代码编译') {
             steps {
                 echo "编译"
-                sh 'mvn -v'
             }
         }
         stage('代码测试') {
