@@ -18,9 +18,6 @@ pipeline {
             }
         }
         stage('代码编译') {
-            agent {
-                docker { image 'maven:3-alpine'}
-            }
             steps {
                 echo "编译"
                 sh 'mvn -v'
