@@ -8,25 +8,24 @@ pipeline {
 
     stages {
         stage('环境检查') {
-
-            agent {
-                docker { image 'maven:3-alpine'}
-            }
-
             steps {
                 sh 'printenv'
                 echo "${hello}"
                 echo "${world}"
                 echo "正在检查基本信息"
-                sh 'mvn -v'
-            }
-        }
-        stage('代码编译') {
-            steps {
-                echo "编译"
                 sh 'docker version'
                 sh 'java -version'
                 sh 'git --version'
+            }
+        }
+        stage('代码编译') {
+            agent {
+                docker { image 'maven:3-alpine'}
+            }
+            steps {
+                echo "编译打包"
+                sh 'mvn -v'
+                sh 'mvn clean package -Dmaven.test.skip=true'
             }
         }
         stage('代码测试') {
