@@ -16,6 +16,7 @@ pipeline {
                 sh 'java -version'
                 sh 'git --version'
                 sh 'docker version'
+                sh 'mvn -v'
             }
         }
         stage('代码编译') {
