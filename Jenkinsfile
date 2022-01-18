@@ -18,13 +18,13 @@ pipeline {
                 echo "${hello}"
                 echo "${world}"
                 echo "正在检查基本信息"
-                sh 'docker version'
                 sh 'mvn -v'
             }
         }
         stage('代码编译') {
             steps {
                 echo "编译"
+                sh 'docker version'
                 sh 'java -version'
                 sh 'git --version'
             }
