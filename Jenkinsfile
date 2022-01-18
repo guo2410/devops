@@ -8,6 +8,11 @@ pipeline {
 
     stages {
         stage('环境检查') {
+
+            agent {
+                docker { image 'maven:3-alpine'}
+            }
+
             steps {
                 sh 'printenv'
                 echo "${hello}"
