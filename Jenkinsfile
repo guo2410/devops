@@ -28,7 +28,7 @@ pipeline {
             steps {
                 echo "编译"
                 sh 'mvn -v'
-                sh 'mvn clean package -s "/var/jenkins_home/appconfig/maven/settings.xml"  -Dmaven.test.skip=true'
+                sh 'mvn clean package -s "/mydata/jenkins_home/appconfig/maven/settings.xml"  -Dmaven.test.skip=true'
             }
         }
         stage('代码测试') {
