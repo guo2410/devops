@@ -20,12 +20,15 @@ pipeline {
         }
         stage('代码编译') {
             agent {
-                docker { image 'maven:3-alpine'}
+                docker {
+                     image 'maven:3-alpine'  //用完就会杀掉
+                     args '-v maven-repo:/root/.m2'
+                 }
             }
             steps {
-                echo "编译打包"
+                echo "编译"
                 sh 'mvn -v'
-                sh 'mvn clean package -Dmaven.test.skip=true'
+                sh 'mvn clean package -s "/var/jenkins_home/appconfig/maven/settings.xml"  -Dmaven.test.skip=true'
             }
         }
         stage('代码测试') {
