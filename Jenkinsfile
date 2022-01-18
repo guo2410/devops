@@ -18,8 +18,6 @@ pipeline {
                 echo "${hello}"
                 echo "${world}"
                 echo "正在检查基本信息"
-                sh 'java -version'
-                sh 'git --version'
                 sh 'docker version'
                 sh 'mvn -v'
             }
@@ -27,6 +25,8 @@ pipeline {
         stage('代码编译') {
             steps {
                 echo "编译"
+                sh 'java -version'
+                sh 'git --version'
             }
         }
         stage('代码测试') {
