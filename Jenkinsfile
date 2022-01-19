@@ -51,7 +51,7 @@ pipeline {
         stage('代码部署') {
             steps {
                 echo('部署')
-               // sh 'docker rm -f devops-dev'
+                sh 'docker rm -f devops-dev'
                 sh 'docker run -d -p 8888:9004 --name devops-dev devops'
             }
         }
