@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     parameters {
-        string(name: 'PROHECT_NAME',defaultValue: '',description:'')
+        string(name: 'PROHECT_NAME', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
     }
 
     environment {
@@ -19,7 +19,7 @@ pipeline {
                 sh 'docker version'
                 sh 'java -version'
                 sh 'git --version'
-                sh 'echo $PROHECT_NAME'
+                echo "${PROHECT_NAME}"
             }
         }
         stage('代码编译') {
