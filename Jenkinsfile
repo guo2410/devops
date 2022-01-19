@@ -29,7 +29,8 @@ pipeline {
                 echo "编译"
                 sh 'pwd && ls -alh'
                 sh 'mvn -v'
-                sh 'mvn clean package -s "/var/jenkins_home/appliconfig/maven/settings.xml"  -Dmaven.test.skip=true'
+                sh "echo 默认的工作目录: ${WORKSPACE}"
+                sh 'cd ${WORKSPACE} && mvn clean package -s "/var/jenkins_home/appliconfig/maven/settings.xml"  -Dmaven.test.skip=true'
             }
         }
         stage('代码测试') {
