@@ -47,7 +47,7 @@ pipeline {
             steps {
                 echo('打包')
                 sh 'pwd && ls -alh'
-                sh 'docker build -t devops .'
+                sh 'docker build -t ${PROHECT_NAME} .'
             }
         }
         stage('代码部署') {
