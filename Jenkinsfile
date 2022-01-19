@@ -19,6 +19,7 @@ pipeline {
                 sh 'docker version'
                 sh 'java -version'
                 sh 'git --version'
+                sh 'echo $PROHECT_NAME'
             }
         }
         stage('代码编译') {
