@@ -1,9 +1,12 @@
 pipeline {
     agent any
 
+    parameters {
+        string(name: 'PROHECT_NAME',defaultValue: '',description:'')
+    }
+
     environment {
       hello = "guoch"
-      world = "123456"
       WS = "${WORKSPACE}"
     }
 
@@ -12,7 +15,6 @@ pipeline {
             steps {
                 sh 'printenv'
                 echo "${hello}"
-                echo "${world}"
                 echo "正在检查基本信息"
                 sh 'docker version'
                 sh 'java -version'
@@ -40,7 +42,6 @@ pipeline {
                 sh 'pwd && ls -alh'
             }
         }
-        //打包
         stage('生成镜像') {
             steps {
                 echo('打包')
