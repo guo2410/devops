@@ -27,6 +27,7 @@ pipeline {
             }
             steps {
                 echo "编译"
+                sh 'pwd && ls -alh'
                 sh 'mvn -v'
                 sh 'mvn clean package -s "/var/jenkins_home/appliconfig/maven/settings.xml"  -Dmaven.test.skip=true'
             }
@@ -34,11 +35,15 @@ pipeline {
         stage('代码测试') {
             steps {
                 echo('测试')
+                sh 'pwd && ls -alh'
             }
         }
-        stage('代码打包') {
+        //打包
+        stage('生成镜像') {
             steps {
                 echo('打包')
+                sh 'pwd && ls -alh'
+                sh 'docker build -t devops .'
             }
         }
         stage('代码部署') {
