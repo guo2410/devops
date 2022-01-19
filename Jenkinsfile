@@ -47,6 +47,7 @@ pipeline {
             steps {
                 echo('打包')
                 sh 'pwd && ls -alh'
+                echo('正在构建${PROHECT_NAME}')
                 sh 'docker build -t ${PROHECT_NAME} .'
             }
         }
